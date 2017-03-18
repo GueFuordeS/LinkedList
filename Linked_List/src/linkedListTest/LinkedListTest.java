@@ -7,6 +7,13 @@ import org.junit.Test;
 
 import linkedList.LinkedList;
 
+/**
+ * 
+ * Esperando implementacao da classe 
+ * para poder dar inicio aos testes
+ * 
+ * @author Gabriel Fernandes
+ */
 public class LinkedListTest {
 	private LinkedList<Integer> linkedList;
 	
@@ -17,8 +24,7 @@ public class LinkedListTest {
 	
 	@Test
 	public void addTest() {
-		//linkedList.add(4);
-		System.out.println(linkedList);
+		//futuramente
 	}
 
 }

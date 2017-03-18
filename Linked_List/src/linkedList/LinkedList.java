@@ -1,5 +1,12 @@
 package linkedList;
 
+/**
+ * Ainda por implementar, ainda pensando 
+ * como posso fazer funcionar perfeitamente
+ * 
+ * @author Gabriel Fernandes
+ * @param <T> Uso do generics-java
+ */
 public class LinkedList<T> {
 	private T elemento;
 	private LinkedList<T> proximo;
@@ -22,7 +29,6 @@ public class LinkedList<T> {
 		}
 	}
 
-/*
 	public void rem(T elemento) {
 		if(this.elemento.equals(elemento)) {
 			this.elemento = null;
@@ -40,7 +46,6 @@ public class LinkedList<T> {
 			return this.proximo.pegaElemento(elemento);
 		}
 	}
-*/
 	
 	public boolean hasProximo() {
 		try {
