@@ -11,6 +11,7 @@ public class LinkedList<T> {
 	private T elemento;
 	private LinkedList<T> proximo;
 	
+	//Talvez eu precise de um atributo size para facilitar o controle da lista
 	public LinkedList() {
 		this.elemento = null;	
 	}
