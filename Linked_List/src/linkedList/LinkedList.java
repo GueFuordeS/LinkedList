@@ -12,66 +12,65 @@ public class LinkedList<T> {
 	private LinkedList<T> proximo;
 	
 	//Talvez eu precise de um atributo size para facilitar o controle da lista
-	public LinkedList() {
-		this.elemento = null;	
+	public LinkedList(T elemento) {
+		this.elemento = elemento;
+		this.proximo = null;
 	}
-	
+
 	public T getElemento() {
 		return this.elemento;
 	}
-	
+
+	public void setElemento(T elemento) {
+		this.elemento = elemento;
+	}
+
 	public void add(T elemento) {
-		if(this.elemento == null) {
-			this.elemento = elemento;
+		if(!this.hasProximo()){
+			this.proximo = new LinkedList<>(elemento);
+			return;
 		}
-		else {
-			proximo = new LinkedList<T>();
-			proximo.add(elemento);
+		this.proximo.add(elemento);
+	}
+	
+	public void rem(T elemento) {
+		if(this.elemento.equals(elemento)) {
+			reorganize();
+			return;
+		}
+		this.proximo.rem(elemento);
+	}
+
+	private void reorganize() {
+		if(this.proximo != null) {
+		if(!this.proximo.hasProximo()) {
+			this.elemento = this.proximo.getElemento();
+			this.proximo = null;				return;
+		}
+		this.elemento = this.proximo.getElemento();
+		this.proximo.reorganize();
 		}
 	}
 
-	public void rem(T elemento) {
-		if(this.elemento.equals(elemento)) {
-			this.elemento = null;
-		}
-		else {
-			proximo.rem(elemento);
-		}
-	}
-	
-	public T pegaElemento(T elemento) {
-		if(this.elemento.equals(elemento)) {
-			return this.elemento;
-		}
-		else {
-			return this.proximo.pegaElemento(elemento);
-		}
-	}
-	
 	public boolean hasProximo() {
-		try {
-			if(proximo.getElemento() == null) {
-				return false;
-			}
-			return true;
-		}
-		catch(NullPointerException e) {
+		if(this.proximo == null) {
 			return false;
 		}
+		return true;
+	}
+
+	public String toStringAux() {
+		if(!this.hasProximo()){
+			return this.elemento.toString() + "]";
+		}
+		return this.elemento + ", " + this.proximo.toStringAux();
 	}
 	
 	@Override
 	public String toString() {
-		if(this.elemento == null) {
-			return "sem mais elementos";
+		if(!this.hasProximo()){
+			return "[" + this.elemento.toString() + "]";
 		}
-		else {
-			if(this.hasProximo()) {
-				return this.elemento + " " + proximo.toString();
-			}
-			else {
-				return this.elemento.toString();
-			}
-		}
+		return "[" + this.toStringAux();
 	}
 }
