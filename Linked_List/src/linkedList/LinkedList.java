@@ -10,9 +10,16 @@ package linkedList;
 public class LinkedList<T> {
 	private T elemento;
 	private LinkedList<T> proximo;
+	private int indice;
 	
 	//Talvez eu precise de um atributo size para facilitar o controle da lista
 	public LinkedList(T elemento) {
+		this.elemento = elemento;
+		this.proximo = null;
+		this.indice = 0;
+	}
+	
+	public LinkedList(T elemento, int indice) {
 		this.elemento = elemento;
 		this.proximo = null;
 	}
@@ -24,10 +31,14 @@ public class LinkedList<T> {
 	public void setElemento(T elemento) {
 		this.elemento = elemento;
 	}
+	
+	public int getIndice() {
+		return this.indice;
+	}
 
 	public void add(T elemento) {
 		if(!this.hasProximo()){
-			this.proximo = new LinkedList<>(elemento);
+			this.proximo = new LinkedList<>(elemento,this.indice+1);
 			return;
 		}
 		this.proximo.add(elemento);
