@@ -41,7 +41,6 @@ public class LinkedListTest {
 		linkedList.rem("choa");
 		assertEquals("[hyejeong, chanmi, jimin]",linkedList.toString());
 		linkedList.rem("chanmi");
-		System.out.println(linkedList.getIndice());
 		assertEquals("[hyejeong, jimin]",linkedList.toString());
 		linkedList.rem("jimin"); // problemas quando o elemento a remover ja eh o ultimo, por resolver
 		//assertEquals("[hyejeong]",linkedList.toString());
@@ -50,5 +49,12 @@ public class LinkedListTest {
 	@Test
 	public void toStringTest() {
 		assertEquals("[hyejeong]", linkedList.toString());
+	}
+	
+	@Test
+	public void getIndexTest() {
+		linkedList.add("chorong");
+		System.out.println(linkedList);
+		System.out.println(linkedList.getIndice("chorong"));
 	}
 }
