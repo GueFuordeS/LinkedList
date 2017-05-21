@@ -34,16 +34,16 @@ public class LinkedListTest {
 		assertEquals("[hyejeong, yuna, seolhyun, choa, chanmi]",linkedList.toString());
 		linkedList.add("jimin");
 		assertEquals("[hyejeong, yuna, seolhyun, choa, chanmi, jimin]",linkedList.toString());
-		linkedList.rem("yuna");
+		linkedList.remByElem("yuna");
 		assertEquals("[hyejeong, seolhyun, choa, chanmi, jimin]",linkedList.toString());
-		linkedList.rem("seolhyun");
+		linkedList.remByElem("seolhyun");
 		assertEquals("[hyejeong, choa, chanmi, jimin]",linkedList.toString());
-		linkedList.rem("choa");
+		linkedList.remByElem("choa");
 		assertEquals("[hyejeong, chanmi, jimin]",linkedList.toString());
-		linkedList.rem("chanmi");
-		assertEquals("[hyejeong, jimin]",linkedList.toString());
-		linkedList.rem("jimin"); // problemas quando o elemento a remover ja eh o ultimo, por resolver
-		//assertEquals("[hyejeong]",linkedList.toString());
+		linkedList.remByElem("chanmi");
+		assertEquals("[hyejeong, jimin]", linkedList.toString());
+		linkedList.remByElem("jimin"); // problemas quando o elemento a remover ja eh o ultimo, por resolver
+		assertEquals("[hyejeong]",linkedList.toString());
 	}
 	
 	@Test
@@ -55,6 +55,16 @@ public class LinkedListTest {
 	public void getIndexTest() {
 		linkedList.add("chorong");
 		System.out.println(linkedList);
-		System.out.println(linkedList.getIndice("chorong"));
+		System.out.println(linkedList.getIndex("chorong"));
+	}
+	
+	@Test
+	public void lengthTest() {
+		assertEquals(1, linkedList.length());
+		linkedList.add("chorong");
+		assertEquals(2, linkedList.length());
+		linkedList.remByElem("hyejeong");
+		linkedList.remByElem("chorong");
+		assertEquals(0, linkedList.length());
 	}
 }
